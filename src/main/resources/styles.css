@@ -1,0 +1,11 @@
+#element-for-gradient {
+    -fx-background-image: url("/images/background.png"); /* Путь к изображению */
+    -fx-background-size: cover; /* Заполняет весь элемент */
+    -fx-background-position: center; /* Центрирует изображение */
+    -fx-background-repeat: no-repeat; /* Не повторяет изображение */
+}
+
+.button {
+    -fx-font-family: "Lobster Regular";
+    -fx-font-size: 14px;
+}
