@@ -8,4 +8,6 @@
 .button {
     -fx-font-family: "Lobster Regular";
     -fx-font-size: 14px;
+    -fx-background-color: #4A4A4A;
+    -fx-text-fill: white;
 }

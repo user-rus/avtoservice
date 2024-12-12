@@ -53,7 +53,7 @@ public class ClientController {
     private TextField phoneField;
 
     @FXML
-    private ComboBox<Client> clientComboBox;
+    private ComboBox<String> clientComboBox;
 
     @FXML
     private TextField brandField; // Поле для ввода марки автомобиля
@@ -88,14 +88,13 @@ public class ClientController {
     @FXML
     private void loadClientsIntoComboBox() {
         clientComboBox.getItems().clear();
-        clientComboBox.getItems().addAll(clientService.getAllClients());
+        clientComboBox.getItems().addAll(clientService.getAllClients().stream().map(c -> c.getFullName()).collect(Collectors.toList()));
     }
 
     @FXML
     public void addClient() {
         if (clientService == null) {
             log.error("ClientService is not initialized!");
-
         }
         Client client = new Client();
         client.setFullName(fullNameField.getText());
@@ -104,6 +103,21 @@ public class ClientController {
         loadClients();
         loadClientsIntoComboBox();
     }
+    @FXML
+    public void updateClient() {
+        Client selectedClient = clientTable.getSelectionModel().getSelectedItem();
+        if (selectedClient == null) {
+            log.error("No client selected for update!");
+            return;
+        }
+        selectedClient.setFullName(fullNameField.getText());
+        selectedClient.setPhone(phoneField.getText());
+        clientService.saveClient(selectedClient);
+        loadClients();
+        loadClientsIntoComboBox();
+    }
+
+
     @FXML
     public void deleteClient() {
         Client selectedClient = clientTable.getSelectionModel().getSelectedItem();
@@ -119,7 +133,9 @@ public class ClientController {
 
     @FXML
     public void addCar() {
-        Client selectedClient = clientComboBox.getValue();
+        Client selectedClient = clientService.getAllClients().stream()
+                .filter(client -> client.getFullName().equals(clientComboBox.getValue())).findFirst().get();
+
         if (selectedClient == null) {
             log.error("No client selected!");
             return;

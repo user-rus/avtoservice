@@ -27,10 +27,10 @@ public class AvtoserviceApplication extends Application {
         Parent root = loadFXML("main.fxml");
         primaryStage.setTitle("Автосервис");
 
-        primaryStage.setWidth(960);
-        primaryStage.setHeight(540);
+        primaryStage.setWidth(678);
+        primaryStage.setHeight(461);
 
-        Scene scene = new Scene(root, 960, 540);
+        Scene scene = new Scene(root);
 
         primaryStage.setScene(scene);
         primaryStage.setResizable(true);

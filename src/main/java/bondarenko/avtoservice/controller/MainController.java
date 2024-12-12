@@ -63,7 +63,7 @@ public class MainController {
             Parent root = loader.load();
 
             Stage stage =  (Stage) manageClientsButton.getScene().getWindow();
-            stage.setScene(new Scene(root, 960, 540));
+            stage.setScene(new Scene(root));
             stage.setTitle("Управление клиентами");
             stage.show();
         } catch (IOException e) {
@@ -74,6 +74,19 @@ public class MainController {
     @FXML
     public void manageServices() {
         log.info("Управление услугами");
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ManageServices.fxml"));
+            loader.setControllerFactory(context::getBean);
+
+            Parent root = loader.load();
+
+            Stage stage =  (Stage) manageServicesButton.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Управление улугами");
+            stage.show();
+        } catch (IOException e) {
+            log.error("Ошибка при открытии окна управления клиентами", e);
+        }
     }
 
     @FXML

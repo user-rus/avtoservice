@@ -13,7 +13,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AmenitiesService {
 
-    private AmenitiesRepository amenitiesRepository;
+    private final AmenitiesRepository amenitiesRepository;
 
     public List<Amenities> getAllServices() {
         return amenitiesRepository.findAll();
@@ -21,5 +21,9 @@ public class AmenitiesService {
 
     public void saveAmenities(Amenities amenities) {
         amenitiesRepository.save(amenities);
+    }
+
+    public void deleteAmenities(Amenities amenities) {
+        amenitiesRepository.delete(amenities);
     }
 }
