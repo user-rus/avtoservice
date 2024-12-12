@@ -27,24 +27,18 @@ public class AvtoserviceApplication extends Application {
         Parent root = loadFXML("main.fxml");
         primaryStage.setTitle("Автосервис");
 
-        // Устанавливаем размеры окна
         primaryStage.setWidth(960);
         primaryStage.setHeight(540);
 
-        // Создаем сцену
         Scene scene = new Scene(root, 960, 540);
 
-        // Загружаем CSS файл
-        scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
-
-        // Устанавливаем сцену
         primaryStage.setScene(scene);
         primaryStage.setResizable(true);
         primaryStage.show();
     }
 
     private Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/" + fxml));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/" + fxml));
         loader.setControllerFactory(context::getBean); // Используем Spring для создания контроллера
         return loader.load();
     }

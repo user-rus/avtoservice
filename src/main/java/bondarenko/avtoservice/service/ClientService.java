@@ -13,13 +13,18 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ClientService {
 
-    private ClientRepository clientRepository;
+    private final ClientRepository clientRepository;
 
     public List<Client> getAllClients() {
         return clientRepository.findAll();
     }
 
     public void saveClient(Client client) {
+        log.info("Saving client {}", client);
         clientRepository.save(client);
+    }
+    public void deleteClient(Client client) {
+        log.info("Deleting client {}", client);
+        clientRepository.delete(client);
     }
 }

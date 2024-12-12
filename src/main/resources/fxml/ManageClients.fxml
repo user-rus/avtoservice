@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="10" xmlns="http://javafx.com/javafx/20.0.1"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="bondarenko.avtoservice.controller.ClientController"
+      >
+    <TableView fx:id="clientTable" prefHeight="250.0" prefWidth="600.0">
+        <columns>
+            <TableColumn fx:id="fullNameColumn" text="Full Name"/>
+            <TableColumn fx:id="phoneColumn" text="Phone"/>
+            <TableColumn fx:id="carsColumn" text="Cars"/>
+        </columns>
+    </TableView>
+
+    <TextField fx:id="fullNameField" promptText="Full Name" layoutX="10" layoutY="420"/>
+    <TextField fx:id="phoneField" promptText="Phone" layoutX="200" layoutY="420"/>
+    <Button text="Add Client" layoutX="400" layoutY="420" onAction="#addClient"/>
+
+    <ComboBox fx:id="clientComboBox" layoutX="10" layoutY="460" promptText="Select Client"/>
+
+    <TextField fx:id="brandField" promptText="Car Brand" layoutX="200" layoutY="460"/>
+    <TextField fx:id="licensePlateField" promptText="License Plate" layoutX="400" layoutY="460"/>
+    <Button text="Add Car" layoutX="600" layoutY="460" onAction="#addCar"/>
+
+    <Button text="Delete Client" onAction="#deleteClient"/>
+    <Button text="Back" layoutX="10" layoutY="500" onAction="#goBack"/>
+</VBox>

@@ -13,7 +13,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CarService {
 
-    private CarRepository carRepository;
+    private final CarRepository carRepository;
 
     public List<Car> findAll() {
         return carRepository.findAll();

@@ -20,4 +20,14 @@ public class Car {
 
     @Column(name = "license_plate", nullable = false)
     private String licensePlate;
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "id=" + id +
+                ", brand='" + brand + '\'' +
+                ", licensePlate='" + licensePlate + '\'' +
+                // Не добавляйте client в toString, чтобы избежать рекурсии
+                '}';
+    }
 }
