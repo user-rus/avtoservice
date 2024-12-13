@@ -4,12 +4,14 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
 import java.io.IOException;
+import java.io.InputStream;
 
 @SpringBootApplication
 public class AvtoserviceApplication extends Application {
@@ -26,7 +28,9 @@ public class AvtoserviceApplication extends Application {
         // Загружаем FXML файл с использованием Spring
         Parent root = loadFXML("main.fxml");
         primaryStage.setTitle("Автосервис");
-
+        InputStream iconStream = getClass().getResourceAsStream("/images/car.png");
+        Image image = new Image(iconStream);
+        primaryStage.getIcons().add(image);
         primaryStage.setWidth(678);
         primaryStage.setHeight(461);
 

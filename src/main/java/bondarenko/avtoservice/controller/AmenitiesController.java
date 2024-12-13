@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -50,22 +51,39 @@ public class AmenitiesController { // Контроллер для работы �
 
     @FXML
     public void initialize() {
+        amenitiesNameColumn.setCellValueFactory(new PropertyValueFactory<>("amenitiesName"));
+        descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
+        priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
         loadServices();
     }
 
     private void loadServices() {
         amenitiesTable.getItems().clear();
         amenitiesTable.getItems().addAll(amenitiesService.getAllServices());
+        log.info(amenitiesTable.getItems().toString());
     }
 
     @FXML
     public void addAmenities() {
-        Amenities аmenities = new Amenities();
-        аmenities.setAmenitiesName(amenitiesNameField.getText());
-        аmenities.setDescription(descriptionField.getText());
-        аmenities.setPrice(Double.parseDouble(priceField.getText()));
-        amenitiesService.saveAmenities(аmenities);
-        loadServices();
+        if (amenitiesNameField.getText().isEmpty() || descriptionField.getText().isEmpty() || priceField.getText().isEmpty()) {
+            log.warn("Все поля должны быть заполнены");
+            return;
+        }
+
+        try {
+            Amenities amenity = new Amenities();
+            amenity.setAmenitiesName(amenitiesNameField.getText());
+            amenity.setDescription(descriptionField.getText());
+            amenity.setPrice(Double.parseDouble(priceField.getText()));
+            amenitiesService.saveAmenities(amenity);
+            loadServices();
+            amenitiesNameField.clear();
+            descriptionField.clear();
+            priceField.clear();
+            log.info("Услуга добавлена: " + amenity);
+        } catch (NumberFormatException e) {
+            log.error("Ошибка при вводе цены: " + priceField.getText(), e);
+        }
     }
 
     @FXML
