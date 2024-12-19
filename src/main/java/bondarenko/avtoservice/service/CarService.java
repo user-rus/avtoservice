@@ -1,6 +1,7 @@
 package bondarenko.avtoservice.service;
 
 import bondarenko.avtoservice.model.Car;
+import bondarenko.avtoservice.model.Client;
 import bondarenko.avtoservice.repository.CarRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -25,5 +26,9 @@ public class CarService {
 
     public void delete(Long id) {
         carRepository.deleteById(id);
+    }
+
+    public List<Car> findAllByClient(Client client) {
+        return carRepository.findByClient(client);
     }
 }

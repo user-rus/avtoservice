@@ -14,7 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class EmployeeService {
 
-    private EmployeeRepository employeeRepository;
+    private final EmployeeRepository employeeRepository;
 
     public List<Employee> getAllEmployees() {
         return employeeRepository.findAll();

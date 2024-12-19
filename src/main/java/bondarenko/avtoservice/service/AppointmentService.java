@@ -14,7 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AppointmentService {
 
-    private AppointmentRepository appointmentRepository;
+    private final AppointmentRepository appointmentRepository;
 
     public List<Appointment> getAllAppointments() {
         return appointmentRepository.findAll();

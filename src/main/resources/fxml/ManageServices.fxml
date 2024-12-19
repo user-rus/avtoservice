@@ -6,7 +6,11 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="element-for-gradient" prefHeight="400.0" prefWidth="601.0" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bondarenko.avtoservice.controller.AmenitiesController">
+<AnchorPane id="element-for-gradient" prefHeight="400.0" prefWidth="601.0"
+            stylesheets="@../styles.css"
+            xmlns="http://javafx.com/javafx/20.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="bondarenko.avtoservice.controller.AmenitiesController">
 
     <TableView fx:id="amenitiesTable" layoutX="14.0" layoutY="14.0" prefHeight="300.0" prefWidth="572.0">
         <columns>

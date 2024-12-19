@@ -50,7 +50,19 @@ public class MainController {
     @FXML
     public void scheduleService() {
         log.info("Запись на обслуживание");
-        // Логика для записи на обслуживание
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/appointment.fxml"));
+            loader.setControllerFactory(context::getBean);
+
+            Parent root = loader.load();
+
+            Stage stage =  (Stage) scheduleServiceButton.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Запись на обслуживание");
+            stage.show();
+        } catch (IOException e) {
+            log.error("Ошибка при открытии окна запись на обслуживание", e);
+        }
     }
 
     @FXML
@@ -85,7 +97,7 @@ public class MainController {
             stage.setTitle("Управление улугами");
             stage.show();
         } catch (IOException e) {
-            log.error("Ошибка при открытии окна управления клиентами", e);
+            log.error("Ошибка при открытии окна управления улугами", e);
         }
     }
 

@@ -27,4 +27,5 @@ public class ClientService {
         log.info("Deleting client {}", client);
         clientRepository.delete(client);
     }
+
 }

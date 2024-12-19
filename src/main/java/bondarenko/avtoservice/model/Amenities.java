@@ -19,4 +19,8 @@ public class Amenities {
 
     @Column(name = "price", nullable = false)
     private double price;
+    @Override
+    public String toString() {
+        return amenitiesName;
+    }
 }

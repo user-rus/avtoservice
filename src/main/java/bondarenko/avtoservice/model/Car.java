@@ -23,11 +23,6 @@ public class Car {
 
     @Override
     public String toString() {
-        return "Car{" +
-                "id=" + id +
-                ", brand='" + brand + '\'' +
-                ", licensePlate='" + licensePlate + '\'' +
-                // Не добавляйте client в toString, чтобы избежать рекурсии
-                '}';
+        return brand;
     }
 }

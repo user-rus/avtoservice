@@ -24,11 +24,6 @@ public class Client {
 
     @Override
     public String toString() {
-        return "Client{" +
-                "id=" + id +
-                ", fullName='" + fullName + '\'' +
-                ", phone='" + phone + '\'' +
-                // Не добавляйте cars в toString, чтобы избежать рекурсии
-                '}';
+        return fullName;
     }
 }

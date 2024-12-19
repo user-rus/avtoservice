@@ -17,6 +17,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
+import java.util.stream.Collectors;
 
 @Controller
 @Slf4j
@@ -60,12 +61,17 @@ public class AmenitiesController { // Контроллер для работы �
     private void loadServices() {
         amenitiesTable.getItems().clear();
         amenitiesTable.getItems().addAll(amenitiesService.getAllServices());
-        log.info(amenitiesTable.getItems().toString());
+        log.info(amenitiesTable.getItems()
+                .stream()
+                .map(Amenities::getAmenitiesName)
+                .collect(Collectors.joining(",")));
     }
 
     @FXML
     public void addAmenities() {
-        if (amenitiesNameField.getText().isEmpty() || descriptionField.getText().isEmpty() || priceField.getText().isEmpty()) {
+        if (amenitiesNameField.getText().isEmpty() ||
+                descriptionField.getText().isEmpty() ||
+                priceField.getText().isEmpty()) {
             log.warn("Все поля должны быть заполнены");
             return;
         }

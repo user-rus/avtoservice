@@ -88,7 +88,10 @@ public class ClientController {
     @FXML
     private void loadClientsIntoComboBox() {
         clientComboBox.getItems().clear();
-        clientComboBox.getItems().addAll(clientService.getAllClients().stream().map(c -> c.getFullName()).collect(Collectors.toList()));
+        clientComboBox.getItems().addAll(clientService.getAllClients()
+                .stream()
+                .map(c -> c.getFullName())
+                .collect(Collectors.toList()));
     }
 
     @FXML
