@@ -45,6 +45,19 @@ public class MainController {
     public void viewRecords() {
         log.info("Просмотр записей");
         // Логика для просмотра записей
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/appointments.fxml"));
+            loader.setControllerFactory(context::getBean);
+
+            Parent root = loader.load();
+
+            Stage stage =  (Stage) viewRecordsButton.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Запись на обслуживание");
+            stage.show();
+        } catch (IOException e) {
+            log.error("Ошибка при открытии окна запись на обслуживание", e);
+        }
     }
 
     @FXML

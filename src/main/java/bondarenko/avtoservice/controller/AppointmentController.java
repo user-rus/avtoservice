@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -34,6 +35,20 @@ public class AppointmentController {
     private TableView<Appointment> appointmentTable;
 
     @FXML
+    private TableColumn<Appointment, Car> carColumn;
+
+    @FXML
+    private TableColumn<Appointment, Amenities> amenitiesColumn;
+
+    @FXML
+    private TableColumn<Appointment, LocalDateTime> dateColumn;
+
+    @FXML
+    private TableColumn<Appointment, String> statusColumn;
+
+
+
+    @FXML
     private ComboBox<Client> clientComboBox;
 
     @FXML
@@ -48,13 +63,18 @@ public class AppointmentController {
     @FXML
     private TextField statusField;
 
-    @FXML
-    private Button addAppointmentButton;
+    /*@FXML
+    private Button addAppointmentButton;*/
 
     @FXML
     public void initialize() {
+        carColumn.setCellValueFactory(new PropertyValueFactory<>("car"));
+        amenitiesColumn.setCellValueFactory(new PropertyValueFactory<>("amenities"));
+        dateColumn.setCellValueFactory(new PropertyValueFactory<>("appointmentDateTime"));
+        statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
         loadClients();
         loadAmenities();
+        loadAppointments();
     }
 
     private void loadClients() {
@@ -106,6 +126,7 @@ public class AppointmentController {
     private void loadAppointments() {
         appointmentTable.getItems().clear();
         appointmentTable.getItems().addAll(appointmentService.getAllAppointments());
+        log.info("Количество записей: {}", appointmentService.getAllAppointments().size());
     }
 
 

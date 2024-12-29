@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<AnchorPane id="element-for-gradient" prefHeight="434.0" prefWidth="671.0" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bondarenko.avtoservice.controller.AppointmentsController">
+    <TableView fx:id="appointmentTable" layoutX="95.0" layoutY="70.0" prefHeight="293.0" prefWidth="514.0">
+        <columns>
+            <TableColumn fx:id="carColumn" text="Автомобиль" />
+            <TableColumn fx:id="amenitiesColumn" text="Услуга" />
+            <TableColumn fx:id="dateColumn" prefWidth="101.5999755859375" text="Дата и время" />
+            <TableColumn fx:id="statusColumn" prefWidth="68.00003662109373" text="Статус" />
+        </columns>
+    </TableView>
+    <TextField fx:id="searchField" layoutX="14.0" layoutY="14.0" promptText="Введите фамилию клиента" />
+    <Button layoutX="200.0" layoutY="14.0" onAction="#searchByFullName" text="Поиск" />
+
+    <Button layoutX="570.0" layoutY="366.0" onAction="#goBack" prefHeight="40.0" prefWidth="75.0" style="-fx-background-color: #4A4A4A;" text="Назад" />
+</AnchorPane>

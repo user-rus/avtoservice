@@ -8,10 +8,13 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="element-for-gradient" prefHeight="434.0" prefWidth="671.0" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bondarenko.avtoservice.controller.AppointmentController">
+<AnchorPane id="element-for-gradient" prefHeight="434.0" prefWidth="671.0"
+            stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/20.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="bondarenko.avtoservice.controller.AppointmentController">
 
 
-<TableView fx:id="appointmentTable" layoutX="14.0" layoutY="14.0" prefHeight="89.0" prefWidth="330.0">
+<TableView fx:id="appointmentTable" layoutX="14.0" layoutY="14.0" prefHeight="90.0" prefWidth="394.0">
     <columns>
         <TableColumn fx:id="carColumn" text="Автомобиль" />
         <TableColumn fx:id="amenitiesColumn" text="Услуга" />

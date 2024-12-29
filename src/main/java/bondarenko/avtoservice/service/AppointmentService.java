@@ -23,4 +23,8 @@ public class AppointmentService {
     public void saveAppointment(Appointment appointment) {
         appointmentRepository.save(appointment);
     }
+
+    public List<Appointment> findAppointmentsByClientFullName(String fullName) {
+        return appointmentRepository.findByCar_Client_fullName(fullName);
+    }
 }
